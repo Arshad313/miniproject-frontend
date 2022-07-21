@@ -6,7 +6,7 @@ const LoginPage: BlitzPage = () => {
   const router = useRouter()
 
   return (
-    <div>
+    <div className="flex h-screen justify-center items-center">
       <LoginForm
         onSuccess={(_user) => {
           const next = router.query.next ? decodeURIComponent(router.query.next as string) : "/"

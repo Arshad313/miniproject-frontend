@@ -6,7 +6,7 @@ const SignupPage: BlitzPage = () => {
   const router = useRouter()
 
   return (
-    <div>
+    <div className="flex h-screen justify-center items-center">
       <SignupForm onSuccess={() => router.push(Routes.Home())} />
     </div>
   )
