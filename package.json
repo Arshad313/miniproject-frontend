@@ -24,6 +24,11 @@
     ]
   },
   "dependencies": {
+    "@emotion/cache": "11.x",
+    "@emotion/react": "11.x",
+    "@emotion/server": "11.x",
+    "@emotion/styled": "11.x",
+    "@mui/material": "5.x",
     "@prisma/client": "3.16.0-integration-tmp-revert-node14.1",
     "autoprefixer": "10.x",
     "blitz": "0.45.5",
