@@ -1,15 +1,16 @@
 {
-  "name": "miniProject",
+  "name": "mini-project",
   "version": "1.0.0",
   "scripts": {
     "dev": "blitz dev",
     "build": "blitz build",
     "start": "blitz start",
     "studio": "blitz prisma studio",
+    "pm": "blitz prisma migrate dev",
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "husky install && blitz prisma migrate dev"
   },
   "prisma": {
     "schema": "db/schema.prisma"
