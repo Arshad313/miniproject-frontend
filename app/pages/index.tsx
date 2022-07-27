@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-unknown-property */
-import { Suspense } from "react"
+import { Suspense, useState } from "react"
 import { Image, Link, BlitzPage, useMutation, Routes } from "blitz"
 import Layout from "app/core/layouts/Layout"
 import { useCurrentUser } from "app/core/hooks/useCurrentUser"
@@ -16,10 +16,31 @@ import { Button, Input } from "@mui/material"
 const UserInfo = () => {
   const currentUser = useCurrentUser()
   const [logoutMutation] = useMutation(logout)
-
+  const [bookTitle, setBookTitle] = useState("")
+  const [bookAuthor, setBookAuthor] = useState("")
+  const [bookData, setBookData] = useState([])
+  const OnSearch = (e) => {
+    e.preventDefault()
+    const queryURL =
+      "https://www.googleapis.com/books/v1/volumes?api_key=AIzaSyC_kBKxX1bOeYZ9z3Itd5x86QwbLL-uS_8&q=" +
+      bookTitle +
+      bookAuthor
+    fetch(queryURL)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setBookData(data.items)
+      })
+  }
+  const OnReset = (e) => {
+    e.preventDefault()
+    setBookTitle("")
+    setBookAuthor("")
+    setBookData([])
+  }
   if (currentUser) {
     return (
-      <>
+      <div>
         <div className="flex justify-evenly items-center w-screen">
           <img src="/logo-book.jpg" alt="" className="w-24" />
           <Button
@@ -31,14 +52,40 @@ const UserInfo = () => {
             Logout
           </Button>
         </div>
-        <div className="h-80 bg-slate-300 w-96 ml-52 mt-20 rounded-lg items-center justify-center">
-          <h1 className="text-center p-5 font-mono text-lg">Search For Books</h1>
-          <Input className="w-full p-3" placeholder="Enter A Title:" />
-          <Input className="w-full p-3" placeholder="Enter An Author:" />
-          <Button>Search</Button>
-          <Button>Reset Fields</Button>
+        <div className="flex justify-evenly items-center w-screen">
+          <div className="h-80 bg-slate-300 w-96 ml-52 mt-20 rounded-lg items-center justify-center">
+            <h1 className="text-center p-5 font-mono text-lg">Search For Books</h1>
+            <Input
+              className="w-full p-3"
+              placeholder="Enter A Title:"
+              value={bookTitle}
+              onChange={(e) => setBookTitle(e.target.value)}
+            />
+            <Input
+              className="w-full p-3"
+              placeholder="Enter An Author:"
+              value={bookAuthor}
+              onChange={(e) => setBookAuthor(e.target.value)}
+            />
+            <Button onClick={OnSearch}>Search</Button>
+            <Button onClick={OnReset}>Reset Fields</Button>
+          </div>
+          <div className="h-96 overflow-x-hidden bg-slate-300 w-96 ml-52 mt-20 rounded-lg items-center justify-center">
+            <h1 className="text-center p-5 font-mono text-lg">Search Results</h1>
+            <div className="flex flex-wrap">
+              {bookData.map((book) => {
+                return (
+                  <div className="w-1/2 p-3" key={book.id}>
+                    <img src={book.volumeInfo.imageLinks.thumbnail} alt="" />
+                    <h1 className="text-center p-5 font-mono text-lg">{book.volumeInfo.title}</h1>
+                    <h1 className="text-center p-5 font-mono text-lg">{book.volumeInfo.authors}</h1>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
         </div>
-      </>
+      </div>
     )
   } else {
     return (
