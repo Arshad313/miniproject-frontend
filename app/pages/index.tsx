@@ -43,6 +43,9 @@ const UserInfo = () => {
       <div>
         <div className="flex justify-evenly items-center w-screen">
           <img src="/logo-book.jpg" alt="" className="w-24" />
+          <Link href={Routes.BooksPage()}>
+            <a>Sell or buy book</a>
+          </Link>
           <Button
             className=""
             onClick={async () => {

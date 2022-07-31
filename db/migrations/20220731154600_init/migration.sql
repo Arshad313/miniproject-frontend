@@ -20,6 +20,7 @@ CREATE TABLE "Session" (
     "antiCSRFToken" TEXT,
     "publicData" TEXT,
     "privateData" TEXT,
+    "name" TEXT,
     "userId" INTEGER,
     CONSTRAINT "Session_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE SET NULL ON UPDATE CASCADE
 );
@@ -35,6 +36,18 @@ CREATE TABLE "Token" (
     "sentTo" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
     CONSTRAINT "Token_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Book" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "bookName" TEXT NOT NULL,
+    "author" TEXT NOT NULL,
+    "price" TEXT NOT NULL,
+    "thumbnail" TEXT NOT NULL,
+    "phone" TEXT NOT NULL,
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" DATETIME NOT NULL
 );
 
 -- CreateIndex
