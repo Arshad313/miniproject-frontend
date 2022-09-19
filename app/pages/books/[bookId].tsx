@@ -24,6 +24,7 @@ export const Book = () => {
           <p>Book Author : {book.author}</p>
           <p>Book Price : {book.price}</p>
           <p>Book buy conduct : {book.phone}</p>
+          <p>status : {book.status}</p>
           <img src={book.thumbnail} alt="thumbnail" />
         </div>
 

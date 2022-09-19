@@ -11,6 +11,8 @@ export function BookForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
       <LabeledTextField name="thumbnail" label="Thumbnail" placeholder="Thumbnail" />
       <LabeledTextField name="price" label="Price of book" placeholder="price" />
       <LabeledTextField name="phone" label="Phone Number" placeholder="phone" />
+      {/* <LabeledTextField name="status" label="status" placeholder="status" /> */}
+      <LabeledTextField name="isdonation" label="donation" placeholder="book type" />
     </Form>
   )
 }

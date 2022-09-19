@@ -28,6 +28,9 @@ export const SignupForm = (props: SignupFormProps) => {
             if (error.code === "P2002" && error.meta?.target?.includes("email")) {
               // This error comes from Prisma
               return { email: "This email is already being used" }
+            } else if (error.code === "P2002" && error.meta?.target?.includes("username")) {
+              // This error comes from Prisma
+              return { username: "This username is already being used" }
             } else {
               return { [FORM_ERROR]: error.toString() }
             }

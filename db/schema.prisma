@@ -66,13 +66,14 @@ model Token {
 // }
 
 model Book {
-  id        Int      @id @default(autoincrement())
-  bookName  String
-  author    String
-  price     String
-  thumbnail String
-  phone     String
-  status    String   @default("not sold")
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         Int      @id @default(autoincrement())
+  bookName   String
+  author     String
+  price      String?
+  isdonation String   @default("no")
+  thumbnail  String
+  phone      String
+  status     String   @default("not sold")
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }

@@ -1,6 +1,6 @@
 import { resolver } from "blitz"
 import db from "db"
-import { z } from "zod"
+import { string, z } from "zod"
 
 const UpdateBook = z.object({
   id: z.number(),
@@ -8,7 +8,9 @@ const UpdateBook = z.object({
   author: z.string(),
   thumbnail: z.string(),
   price: z.string(),
+  isdonation: string(),
   phone: z.string(),
+  status: z.string(),
 })
 
 export default resolver.pipe(
