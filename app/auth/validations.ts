@@ -6,6 +6,7 @@ export const email = z
   .transform((str) => str.toLowerCase().trim())
 export const name = z.string().transform((str) => str.toLowerCase().trim())
 
+export const username = z.string().min(5).max(100)
 export const password = z
   .string()
   .min(10)
@@ -14,13 +15,14 @@ export const password = z
 
 export const Signup = z
   .object({
+    username,
     email,
     password,
     confirmPassword: password,
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
-    path: ["passwordConfirmation"], // set the path of the error
+    path: ["confirmPassword"], // set the path of the error
   })
 
 export const Login = z.object({
