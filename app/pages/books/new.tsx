@@ -24,7 +24,8 @@ const NewBookPage: BlitzPage = () => {
           thumbnail: "",
           price: "",
           phone: "",
-          status:""
+          status: "",
+          isdonation: "0",
         }}
         onSubmit={async (values) => {
           try {

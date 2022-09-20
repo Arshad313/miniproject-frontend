@@ -18,23 +18,51 @@ export const BooksList = () => {
   const goToNextPage = () => router.push({ query: { page: page + 1 } })
 
   return (
-    <div>
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
-            <Link href={Routes.ShowBookPage({ bookId: book.id })}>
-              <a>{book.bookName}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div style={{ display: "flex" }}>
+      <h1>Sell</h1>
+      <div>
+        <br />
+        <ul>
+          {books.map((book) =>
+            !book.isdonation ? (
+              <li key={book.id}>
+                <Link href={Routes.ShowBookPage({ bookId: book.id })}>
+                  <a>{book.bookName}</a>
+                </Link>
+              </li>
+            ) : null
+          )}
+        </ul>
 
-      <button disabled={page === 0} onClick={goToPreviousPage}>
-        Previous
-      </button>
-      <button disabled={!hasMore} onClick={goToNextPage}>
-        Next
-      </button>
+        <button disabled={page === 0} onClick={goToPreviousPage}>
+          Previous
+        </button>
+        <button disabled={!hasMore} onClick={goToNextPage} style={{ marginRight: 2 }}>
+          Next
+        </button>
+      </div>
+      <div>
+        <h1>Donation</h1>
+        <br />
+        <ul>
+          {books.map((book) =>
+            book.isdonation ? (
+              <li key={book.id}>
+                <Link href={Routes.ShowBookPage({ bookId: book.id })}>
+                  <a>{book.bookName}</a>
+                </Link>
+              </li>
+            ) : null
+          )}
+        </ul>
+
+        <button disabled={page === 0} onClick={goToPreviousPage}>
+          Previous
+        </button>
+        <button disabled={!hasMore} onClick={goToNextPage} style={{ marginRight: 2 }}>
+          Next
+        </button>
+      </div>
     </div>
   )
 }

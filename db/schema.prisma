@@ -70,7 +70,7 @@ model Book {
   bookName   String
   author     String
   price      String?
-  isdonation String   @default("no")
+  isdonation Boolean  @default(false)
   thumbnail  String
   phone      String
   status     String   @default("not sold")
