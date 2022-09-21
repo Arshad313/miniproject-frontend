@@ -18,10 +18,15 @@ export const BooksList = () => {
   const goToNextPage = () => router.push({ query: { page: page + 1 } })
 
   return (
-    <div style={{ display: "flex" }}>
-      <h1>Sell</h1>
+    <div
+      style={{
+        display: "flex",
+        width: "100vw",
+        justifyContent: "space-evenly",
+      }}
+    >
       <div>
-        <br />
+        <h1>Sell</h1>
         <ul>
           {books.map((book) =>
             !book.isdonation ? (
@@ -34,7 +39,13 @@ export const BooksList = () => {
           )}
         </ul>
 
-        <button disabled={page === 0} onClick={goToPreviousPage}>
+        <button
+          disabled={page === 0}
+          onClick={goToPreviousPage}
+          style={{
+            marginRight: 5,
+          }}
+        >
           Previous
         </button>
         <button disabled={!hasMore} onClick={goToNextPage} style={{ marginRight: 2 }}>
@@ -43,7 +54,6 @@ export const BooksList = () => {
       </div>
       <div>
         <h1>Donation</h1>
-        <br />
         <ul>
           {books.map((book) =>
             book.isdonation ? (
@@ -56,7 +66,13 @@ export const BooksList = () => {
           )}
         </ul>
 
-        <button disabled={page === 0} onClick={goToPreviousPage}>
+        <button
+          disabled={page === 0}
+          onClick={goToPreviousPage}
+          style={{
+            marginRight: 5,
+          }}
+        >
           Previous
         </button>
         <button disabled={!hasMore} onClick={goToNextPage} style={{ marginRight: 2 }}>
