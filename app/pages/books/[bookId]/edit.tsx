@@ -32,7 +32,8 @@ export const EditBook = () => {
         <div className="div">
           <p>Book Name : {book.bookName}</p>
           <p>Book Author : {book.author}</p>
-          <p>Book Price : {book.price}</p>
+          {book.isdonation ? <p>Book Status : Donation</p> : <p>Book Status : For Sale</p>}
+          {book.isdonation && <p>Book Price : {book.price}</p>}
           <p>Book buy conduct : {book.phone}</p>
           <img src={book.thumbnail} alt="thumbnail" />
         </div>

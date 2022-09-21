@@ -48,7 +48,7 @@ CREATE TABLE "Book" (
     "isdonation" BOOLEAN NOT NULL DEFAULT false,
     "thumbnail" TEXT NOT NULL,
     "phone" TEXT NOT NULL,
-    "status" TEXT NOT NULL DEFAULT 'not sold',
+    "status" TEXT NOT NULL DEFAULT 'Active',
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" DATETIME NOT NULL
 );
