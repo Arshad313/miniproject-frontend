@@ -96,11 +96,11 @@ const BooksPage: BlitzPage = () => {
             <a>Create Book</a>
           </Link>
         </p>
-	<p>
-	 <Link href={Routes.HomePage()}>
-                  <a>{book.bookName}</a>
-         </Link>
-	</p>
+        <p>
+          <Link href={Routes.Home()}>
+            <a>Home</a>
+          </Link>
+        </p>
         <Suspense fallback={<div>Loading...</div>}>
           <BooksList />
         </Suspense>
